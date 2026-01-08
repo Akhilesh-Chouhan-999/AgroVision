@@ -1,0 +1,26 @@
+# ===============================
+# Frontend – React / Vite / CRA
+# ===============================
+
+node_modules/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Production build
+build/
+dist/
+
+# Framework caches
+.vite/
+.parcel-cache/
+.next/
+.turbo/
+
+# Logs
+*.log
+
+# Coverage
+coverage/
