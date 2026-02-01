@@ -9,11 +9,13 @@ export const createCrop = async (req , res , next ) => {
 
         res.status(201).json({
             success : true , 
-            data : crop 
-        })
+            data : crop  
+        }) ; 
 
-    } catch (error) {
-        next(error) ; 
+    }
+    
+    catch (error) {
+        next(new AppError('Error in Crop Controller or Service  ' , 400)) ; 
     }
 } ; 
 
@@ -25,11 +27,12 @@ export const getAllCrops = async (req , res , next ) => {
     res.status(200).json({
         success : true , 
         data : crops
-    })
+    });
+    
     } 
     
     catch (error) {
-        next(error) ; 
+       next(new AppError('Error in Crop Controller or Service  ' , 400)) ; 
     }
 }
 

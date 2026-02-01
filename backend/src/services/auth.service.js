@@ -5,7 +5,9 @@ import AppError from '../errors/app.error.js';
 
 export const registerUser = async (userData) => {
 
-    const { name, phone, password } = userData;
+    const { name, phone, password , role }  = userData;
+
+    role.toUpperCase() ; 
 
     if (!name || !phone || !password) {
         throw new AppError('Name , phone and password are required', 400);
@@ -29,7 +31,8 @@ export const registerUser = async (userData) => {
                         .create({ 
                             name, 
                             phone, 
-                            password : hashedPassword
+                            password : hashedPassword , 
+                            role
                          });
     } 
     catch (err) {

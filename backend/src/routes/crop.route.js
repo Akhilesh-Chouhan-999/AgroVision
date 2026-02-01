@@ -6,10 +6,8 @@ import { createCrop, getAllCrops } from '../controllers/crop.controller.js';
 
 const router = express.Router() ; 
 
-
-
-router.post('/' , protect , restrictTo('ADMIN') , createCrop) ; 
-router.get('/' , protect , getAllCrops) ; 
+router.post('/createCrop' , protect , restrictTo('ADMIN') , createCrop) ; 
+router.get('/getAllCrops' , protect , getAllCrops) ; 
 
 export default router ; 
 

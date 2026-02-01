@@ -5,6 +5,8 @@ const restrictTo = ( ...roles) => {
 
         if(!req.user || !req.user.role)
             return next(new AppError('Authentication Required' , 401)) ;
+
+        
         
         const userRole = req.user.role.toUpperCase() ; 
         

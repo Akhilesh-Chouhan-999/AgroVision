@@ -1,4 +1,6 @@
 import { createDiseaseService, getDiseaseByCropService } from "../services/disease.service.js"
+import AppError from "../errors/app.error.js";
+
 export const createDisease = async (req , res , next) => {
    try {
      const disease = await createDiseaseService(req.body) ; 
@@ -9,7 +11,7 @@ export const createDisease = async (req , res , next) => {
     }) ; 
 
    } catch (error) {
-     next(error) ; 
+      next(new AppError('Error in Disease Controller or Service  ' , 400)) ;  
    }
 }
 
@@ -23,7 +25,7 @@ export const getDiseasesByCrop = async (req , res , next) => {
             data : disease
         })
     } catch (error) {
-        next(error) ; 
+        next(new AppError('Error in Disease Controller or Service  ' , 400)) ; 
     } 
 } ; 
 
