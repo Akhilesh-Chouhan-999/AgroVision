@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import AppError from '../errors/app.error.js';
 
 const protect = (req, res, next) => {
+ 
   let token;
 
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {

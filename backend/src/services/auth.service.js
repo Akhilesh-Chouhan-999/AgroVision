@@ -92,5 +92,4 @@ export const loginUser = async ({ phone, password }) => {
         token
         }
         
-}
-
+};

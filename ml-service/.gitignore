@@ -1,0 +1,71 @@
+# =========================
+# Python cache & bytecode
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual environment
+# =========================
+venv/
+.env/
+.env.*
+
+# =========================
+# ML / Model artifacts
+# =========================
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.pt
+models/*.onnx
+models/*.bin
+
+# If you want to ignore entire models folder
+# models/
+
+# =========================
+# Logs & temp files
+# =========================
+*.log
+logs/
+tmp/
+temp/
+
+# =========================
+# Jupyter / Experiments
+# =========================
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# =========================
+# VS Code & IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Docker
+# =========================
+*.dockerignore
+
+# =========================
+# Python packaging
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Test & coverage
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
