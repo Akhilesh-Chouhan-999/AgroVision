@@ -34,6 +34,17 @@ const predictionSchema = new mongoose.Schema({
         type : String , 
         enum : ['LOW' , 'MEDIUM' , 'HIGH'] , 
         default : null 
+    } ,
+
+    status : {
+        type : String ,
+        enum : ['PENDING' , 'PROCESSING' , 'COMPLETED' , 'FAILED'],
+        default : 'PENDING'
+    } ,
+
+    errorMessage : {
+        type : String ,
+        default : null
     }
 
 },

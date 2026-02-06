@@ -1,5 +1,6 @@
 import AppError from '../errors/app.error.js' ; 
-import { createPredictionService } from '../services/prediction.service.js';
+import { predictionQueue } from '../queues/prediction.queue.js';
+import { createPredictionService, runPredictionPipeline } from '../services/prediction.service.js';
 
 export const uploadLeafImage = async (req , res , next) => {
  
@@ -21,13 +22,34 @@ export const uploadLeafImage = async (req , res , next) => {
             imagePath : req.file.path ,
         }) ;
 
-
-        res.status(201).json({
-            success : true ,
-            message : 'Leaf image uploaded successfully ' ,
-            imagePath : req.file.path  ,
-            data : prediction
+        await predictionQueue.add('RUN_ML' , {
+            predictionId : prediction._id ,
+            imagePath : req.file.path,
+            cropId
         }) ; 
+
+        res
+            .status(202)
+            .json({
+            success: true,
+            message: "Prediction queued for processing",
+            predictionId: prediction._id,
+            status: prediction.status,
+         });
+
+        // const result = await runPredictionPipeline({
+        //     predictionId : prediction._id ,
+        //     imagePath : req.file.path ,
+        //     cropId 
+        // }) ;
+
+
+        // res.status(201).json({
+        //     success : true ,
+        //     message : 'Leaf image uploaded successfully ' ,
+        //     imagePath : req.file.path  ,
+        //     data : result ,
+        // }) ; 
 
 
     } catch (error) {
