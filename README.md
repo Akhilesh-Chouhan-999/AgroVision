@@ -1,137 +1,67 @@
-🌾 AgroVision
+🌾 KisanRakshak Pro
 
-Enterprise-Grade AI Agriculture Platform . 
-KisanRakshak Pro is a production-style AI-powered agriculture platform designed to help farmers detect crop diseases, assess severity, and receive actionable advisory using Computer Vision, ML microservices, and a scalable backend architecture.
-This project is built with real-world system design principles and is suitable for government-scale deployment and resume/interview evaluation.
+A production-grade AI-powered agriculture platform for crop disease detection, severity estimation, and farmer advisory using React, Node.js, Express, Python ML services, Redis, and MongoDB.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🚀 Key Features
-👨‍🌾 Farmer-Focused Features
-Crop disease detection using leaf images
-AI-based disease classification (CNN)
-Disease severity estimation (Low / Medium / High)
-Actionable advisory:
-Home remedies
-Organic methods
-Chemical control (last resort)
-Asynchronous prediction pipeline (non-blocking UX)
-Mobile-first, low-latency frontend
+🚀 Features
 
-🧠 AI & ML Capabilities
+👨‍🌾 Farmer-Centric Capabilities
+🌱 Crop disease detection using leaf images
+📸 Image upload with async processing
+🧠 AI-based disease classification (CNN)
+🚦 Disease severity estimation (Low / Medium / High)
+📋 Actionable advisory:
+        Home remedies
+        Organic methods
+        Chemical control (last resort)
+🔄 Real-time prediction status updates
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+⚙️ Backend & System Features
+
+Asynchronous prediction pipeline using BullMQ + Redis
+Modular Node.js + Express backend
+Secure file upload handling
+Graceful fallback if ML service is unavailable
+Centralized error handling
+Resume-grade, production-style architecture
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+🤖 Machine Learning
 CNN-based image classification (EfficientNet / ResNet)
 OpenCV-based severity estimation
-ML inference via Python microservice
-Graceful fallback when ML service is unavailable
+Python ML microservice using FastAPI
+Decoupled ML inference service
+Model training pipeline included
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-⚙️ Backend Engineering
-Modular Node.js + Express backend
-MongoDB for core data
-BullMQ + Redis for async prediction jobs
-Role-ready architecture (Farmer / Admin)
-Centralized error handling
-Secure file upload pipeline
 
-🖥️ Frontend (React + TypeScript)
+🖥️ Frontend
+React + TypeScript (Vite)
 Feature-based modular architecture
-Upload → Predict → Result flow
-Real-time polling for prediction status
-Clean UI components (status, severity, advisory)
-Production-grade structure (AppShell, services, hooks)
+Live polling for prediction status
+Severity visualization & advisory panels
+Mobile-first, farmer-friendly UI
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🏗️ High-Level Architecture
-Frontend (React + TS)
-        |
-        |  REST API
-        v
-Backend (Node.js + Express)
-        |
-        |  Job Queue (BullMQ + Redis)
-        v
-ML Service (Python + FastAPI)
-        |
-        |  CNN + OpenCV
-        v
-Prediction Results + Advisory
 
-📁 Project Structure
-AgroVision/
-├── backend/
-│   ├── controllers/
-│   ├── services/
-│   ├── models/
-│   ├── workers/
-│   ├── routes/
-│   └── middlewares/
-│
-├── ml-service/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── inference.py
-│   │   ├── severity.py
-│   │   └── image_utils.py
-│   └── training/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   ├── pages/
-│   │   ├── features/
-│   │   ├── services/
-│   │   └── ui/
-│
-└── README.md
-
-🔄 Prediction Flow (End-to-End)
+🧩 Prediction Flow
 Farmer uploads crop leaf image
 Backend creates a prediction entry
-Prediction job is queued (BullMQ)
+Job is queued using BullMQ
 ML service performs:
-Disease classification
-Severity estimation
-Backend enriches result with advisory
+                     1. Disease classification
+                     2. Severity estimation
+Backend enriches result with advisory rules
 Frontend polls and displays final result
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-🧪 Tech Stack
-Frontend
-React (Vite)
-TypeScript
-Tailwind CSS
-Axios
-React Router
-Backend
-Node.js
-Express.js
-MongoDB + Mongoose
-Redis
-BullMQ
-JWT Authentication (ready)
-Machine Learning
-Python
-TensorFlow / Keras
-OpenCV
-FastAPI
 
-🛡️ Engineering Highlights
-Async-first design (no blocking API calls)
-Service-based backend architecture
-ML microservice isolation
-Graceful degradation if ML fails
-Production-style folder organization
-Resume-grade codebase (not a demo)
-
-⚠️ Important Notes
-Virtual environments (venv, wsl-venv) are intentionally excluded from Git
-ML models are not committed; only training & inference logic is versioned
-Backend and ML services are treated as immutable contracts by frontend
-
-🧭 Roadmap (Future Enhancements)
-Weather-based disease risk prediction (LSTM)
-Admin analytics dashboard
-PWA + offline-first farmer experience
-Multi-language support (Hindi-first)
-Model performance monitoring
-
-👨‍💻 Author
-Akhilesh Chouhan
-B.Tech – Computer Science
-Backend | Full-Stack | Applied AI
-India 🇮🇳
+📋 Prerequisites
+Node.js (v18 or higher recommended)
+MongoDB (local or MongoDB Atlas)
+Redis for BullMQ)
+Python 3.10+
+pip / virtualenv
+npm or yarn
