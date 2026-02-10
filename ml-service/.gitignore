@@ -84,6 +84,7 @@ __pycache__/
 venv/
 .venv/
 
+wsl-env
 # ===============================
 # Dataset (ML data)
 # ===============================
@@ -117,3 +118,8 @@ logs/
 .idea/
 .DS_Store
 Thumbs.db
+
+
+wsl-venv/
+__pycache__/
+*.pyc

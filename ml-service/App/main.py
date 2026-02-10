@@ -1,38 +1,37 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, UploadFile, File
+import shutil
+import os
+import uuid
 
-from app.utils import validate_request
-from app.predictor import predict_disease
+from app.inference import run_inference
 
-app = FastAPI(title='AgroVision ML Service')
+app = FastAPI()
 
-@app.post('/predict')
-async def predict(request: Request):
+UPLOAD_DIR = "uploads"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+@app.get("/health")
+def health():
+    return {"status": "ML service running"}
+
+@app.post("/predict")
+def predict(file: UploadFile = File(...)):
     try:
-        data = await request.json()
-    except Exception:
-        return JSONResponse(
-            status_code=400,
-            content={"success": False, "message": "Invalid JSON body"}
-        )
+        filename = f"{uuid.uuid4()}.jpg"
+        file_path = os.path.join(UPLOAD_DIR, filename)
 
-    is_valid, error = validate_request(data)
-    if not is_valid:
-        return JSONResponse(
-            status_code=400,
-            content={"success": False, "message": error}
-        )
+        with open(file_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
 
-    result = predict_disease(
-        image_path=data["image_path"],
-        crop=data["crop"]
-    )
+        result = run_inference(file_path)
 
-    return {
-        "success": True,
-        "prediction": {
-            "label": result["label"],
-            "confidence": result["confidence"]
-        },
-        "severity": result["severity"]
-    }
+        return {
+            "success": True,
+            "result": result
+        }
+
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e)
+        }

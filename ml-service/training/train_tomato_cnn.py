@@ -1,3 +1,7 @@
+from gpu_config import configure_gpu
+configure_gpu()
+
+
 import tensorflow as tf
 from tensorflow.keras.applications import EfficientNetB0
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -5,12 +9,14 @@ from tensorflow.keras import layers, models
 import json
 import os
 
+print(tf.config.list_physical_devices('GPU'))
+
 # --------------------
 # CONFIG
 # --------------------
 IMG_SIZE = 224
-BATCH_SIZE = 32
-EPOCHS = 3
+BATCH_SIZE = 16
+EPOCHS = 1
 DATASET_DIR = "training/dataset/TOMATO"
 MODEL_DIR = "models"
 

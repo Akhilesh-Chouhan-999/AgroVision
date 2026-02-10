@@ -18,5 +18,7 @@ router.get(
     '/:id/status' ,
     protect ,
     getPredictionStatus
-)
+) ;
+
+
 export default router ; 
